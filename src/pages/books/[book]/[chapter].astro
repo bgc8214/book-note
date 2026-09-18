@@ -2,7 +2,7 @@
 import { getCollection, render, type CollectionEntry } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
 import Disclaimer from '../../../components/Disclaimer.astro';
-import { chapterOneLiner } from '../../../lib/content.mjs';
+import { chapterOneLiner, headings } from '../../../lib/content.mjs';
 import { url } from '../../../lib/url.mjs';
 
 export async function getStaticPaths() {
@@ -16,7 +16,7 @@ export async function getStaticPaths() {
 
     return own.map((chapter, i) => ({
       params: { book: book.data.slug, chapter: chapter.data.slug },
-      props: { book, chapter, prev: own[i - 1] ?? null, next: own[i + 1] ?? null },
+      props: { book, chapter, siblings: own, prev: own[i - 1] ?? null, next: own[i + 1] ?? null },
     }));
   });
 }
@@ -24,55 +24,99 @@ export async function getStaticPaths() {
 type Props = {
   book: CollectionEntry<'books'>;
   chapter: CollectionEntry<'chapters'>;
+  siblings: CollectionEntry<'chapters'>[];
   prev: CollectionEntry<'chapters'> | null;
   next: CollectionEntry<'chapters'> | null;
 };
 
-const { book, chapter, prev, next } = Astro.props;
+const { book, chapter, siblings, prev, next } = Astro.props;
 const bookSlug = book.data.slug;
+const sections = headings(chapter.body);
 const { Content } = await render(chapter);
 ---
 
 <Base
   title={`${chapter.data.title} — ${book.data.title}`}
   description={chapterOneLiner(chapter.body) || book.data.one_liner}
+  current="books"
 >
   <p class="crumbs">
     <a href={url('/')}>독서 노트</a> / <a href={url(`/books/${bookSlug}/`)}>{book.data.title}</a> /
     {chapter.data.order}장
   </p>
 
-  <article class="prose narrow">
-    <p class="eyebrow">{chapter.data.order}장</p>
-    <h1>{chapter.data.title}</h1>
-    <Content />
-  </article>
+  <div class="doc">
+    <div class="doc__body">
+      <header class="doc__head">
+        <p class="doc__ordinal">{String(chapter.data.order).padStart(2, '0')}장</p>
+        <h1 class="doc__title">{chapter.data.title}</h1>
+      </header>
 
-  <nav class="chapter-nav narrow">
+      <article class="prose">
+        <Content />
+      </article>
+
+      <nav class="chapter-nav">
+        {
+          prev && (
+            <a class="prev" href={url(`/books/${bookSlug}/${prev.data.slug}/`)}>
+              <span class="dir">← {prev.data.order}장</span>
+              {prev.data.title}
+            </a>
+          )
+        }
+        {
+          next && (
+            <a class="next" href={url(`/books/${bookSlug}/${next.data.slug}/`)}>
+              <span class="dir">{next.data.order}장 →</span>
+              {next.data.title}
+            </a>
+          )
+        }
+      </nav>
+
+      {/* 책 페이지를 경유하지 않고 다른 장으로 */}
+      <details class="jump">
+        <summary>다른 장으로</summary>
+        <ol>
+          {
+            siblings.map((c) => (
+              <li>
+                <a
+                  href={url(`/books/${bookSlug}/${c.data.slug}/`)}
+                  aria-current={c.data.slug === chapter.data.slug ? 'page' : undefined}
+                >
+                  <span class="num">{String(c.data.order).padStart(2, '0')}</span>
+                  {c.data.title}
+                </a>
+              </li>
+            ))
+          }
+        </ol>
+      </details>
+
+      <Disclaimer title={book.data.title} buyUrl={book.data.buy_url} />
+    </div>
+
     {
-      prev && (
-        <a class="prev" href={url(`/books/${bookSlug}/${prev.data.slug}/`)}>
-          <span class="dir">← {prev.data.order}장</span>
-          {prev.data.title}
-        </a>
+      sections.length > 1 && (
+        <aside class="doc__toc" aria-label="이 장의 목차">
+          <p class="doc__toc-label">이 장</p>
+          <ol>
+            {sections.map((s) => (
+              <li>
+                <a href={`#${s.id}`}>{s.text}</a>
+              </li>
+            ))}
+          </ol>
+        </aside>
       )
     }
-    {
-      next && (
-        <a class="next" href={url(`/books/${bookSlug}/${next.data.slug}/`)}>
-          <span class="dir">{next.data.order}장 →</span>
-          {next.data.title}
-        </a>
-      )
-    }
-  </nav>
-
-  <Disclaimer title={book.data.title} buyUrl={book.data.buy_url} />
+  </div>
 </Base>
 
 <script define:vars={{ storageKey: `check:${bookSlug}/${chapter.data.slug}` }}>
   // 실천 아이템은 읽을거리가 아니라 할 일이다. 체크 상태를 이 브라우저에 남긴다.
-  // (기기 간 동기화는 하지 않는다. 서버가 없고, 있을 이유도 없다.)
   const boxes = document.querySelectorAll('.prose input[type="checkbox"]');
 
   boxes.forEach((box, i) => {
@@ -100,4 +144,28 @@ const { Content } = await render(chapter);
       }
     });
   });
+
+  // 목차에서 지금 읽는 섹션을 표시한다. 스크롤 리빌은 하지 않는다 — 표시만.
+  const links = document.querySelectorAll('.doc__toc a');
+  if (links.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const byId = new Map([...links].map((a) => [a.getAttribute('href').slice(1), a]));
+    const seen = new Set();
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) seen.add(entry.target.id);
+          else seen.delete(entry.target.id);
+        });
+        const first = [...byId.keys()].find((id) => seen.has(id));
+        byId.forEach((a, id) => {
+          if (id === first) a.setAttribute('aria-current', 'true');
+          else a.removeAttribute('aria-current');
+        });
+      },
+      { rootMargin: '0px 0px -70% 0px' }
+    );
+
+    document.querySelectorAll('.prose h2[id]').forEach((h) => observer.observe(h));
+  }
 </script>

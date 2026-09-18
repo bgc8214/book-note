@@ -45,6 +45,17 @@ export function bullets(body = '', name) {
   return out.filter(Boolean);
 }
 
+/**
+ * 본문의 '## ' 헤딩 목록. 마크다운 렌더러가 붙이는 id 규칙(공백 → 하이픈)을 그대로 따라
+ * 목차에서 같은 앵커를 가리키게 한다.
+ */
+export function headings(body = '') {
+  return [...body.matchAll(/^##\s+(.+?)\s*$/gm)].map((m) => {
+    const text = m[1].trim();
+    return { text, id: text.replace(/\s+/g, '-') };
+  });
+}
+
 /** 2026-09-14 형태로. 사이트 전체에서 이 표기만 쓴다. */
 export function formatDate(d) {
   return new Date(d).toISOString().slice(0, 10);

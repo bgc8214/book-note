@@ -1,0 +1,13 @@
+[
+  {
+    "date": "2026-09-18",
+    "scope": "app",
+    "macrostructure": "Long Document / Index-First / Catalogue",
+    "theme": "Almanac",
+    "theme_axes": "light / roman-serif(KR) / warm",
+    "nav": "N9 edge-aligned minimal",
+    "footer": "Ft4 dense colophon",
+    "enrichment": "none",
+    "brief": "독서 노트 — 읽기 경험 중심 UX/UI 재설계 (design.md 기반)"
+  }
+]

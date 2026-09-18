@@ -1,8 +1,8 @@
 ---
 import { getCollection, render, type CollectionEntry } from 'astro:content';
-import { url } from '../../../lib/url.mjs';
 import Base from '../../../layouts/Base.astro';
 import Disclaimer from '../../../components/Disclaimer.astro';
+import { url } from '../../../lib/url.mjs';
 
 export async function getStaticPaths() {
   const books = await getCollection('books');
@@ -24,16 +24,28 @@ const { book, glossary } = Astro.props;
 const { Content } = await render(glossary);
 ---
 
-<Base title={`용어집 — ${book.data.title}`} description={`《${book.data.title}》 용어집`}>
+<Base
+  title={`용어집 — ${book.data.title}`}
+  description={`《${book.data.title}》 용어집`}
+  current="books"
+>
   <p class="crumbs">
-    <a href={url('/')}>독서 노트</a> / <a href={url(`/books/${book.data.slug}/`)}>{book.data.title}</a> / 용어집
+    <a href={url('/')}>독서 노트</a> /
+    <a href={url(`/books/${book.data.slug}/`)}>{book.data.title}</a> / 용어집
   </p>
 
-  <article class="prose narrow">
-    <p class="eyebrow">용어집</p>
-    <h1>{book.data.title}</h1>
-    <Content />
-  </article>
+  <div class="doc">
+    <div class="doc__body">
+      <header class="doc__head">
+        <p class="doc__ordinal">용어집</p>
+        <h1 class="doc__title">{book.data.title}</h1>
+      </header>
 
-  <Disclaimer title={book.data.title} buyUrl={book.data.buy_url} />
+      <article class="prose">
+        <Content />
+      </article>
+
+      <Disclaimer title={book.data.title} buyUrl={book.data.buy_url} />
+    </div>
+  </div>
 </Base>

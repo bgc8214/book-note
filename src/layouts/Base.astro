@@ -1,14 +1,27 @@
 ---
+import { getCollection } from 'astro:content';
 import '../styles/global.css';
+import { bullets } from '../lib/content.mjs';
 import { url } from '../lib/url.mjs';
 
 interface Props {
   title: string;
   description?: string;
+  /** 헤더에서 현재 위치 표시용 */
+  current?: 'books' | 'today';
 }
 
-const { title, description } = Astro.props;
+const { title, description, current } = Astro.props;
 const siteName = '독서 노트';
+
+// 콜로폰은 사이트의 현재 상태를 말한다. 지어내지 않고 콘텐츠에서 센다.
+const books = await getCollection('books');
+const chapters = await getCollection('chapters');
+const itemCount = chapters.reduce(
+  (sum, c) => sum + bullets(c.body, '요점').length + bullets(c.body, '실천 아이템').length,
+  0
+);
+const builtAt = new Date().toISOString().slice(0, 10);
 ---
 
 <!doctype html>
@@ -20,24 +33,47 @@ const siteName = '독서 노트';
     <title>{title === siteName ? title : `${title} — ${siteName}`}</title>
     {description && <meta name="description" content={description} />}
     <meta name="generator" content={Astro.generator} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&family=Noto+Serif+KR:wght@600&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+    />
   </head>
   <body>
-    <header class="site-header">
+    <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+
+    <header class="nav-edge">
       <div class="wrap">
-        <a class="site-title" href={url('/')}>{siteName}</a>
-        <nav>
-          <a href={url('/today/')}>오늘 다시 보기</a>
-        </nav>
+        <a class="wordmark" href={url('/')} aria-current={current === 'books' ? 'page' : undefined}>
+          {siteName}
+        </a>
+        <a
+          class="nav-edge__link"
+          href={url('/today/')}
+          aria-current={current === 'today' ? 'page' : undefined}
+        >
+          오늘 다시 보기
+        </a>
       </div>
     </header>
 
-    <main class="wrap">
+    <main class="wrap" id="main">
       <slot />
     </main>
 
-    <footer class="site-footer">
+    <footer class="colophon">
       <div class="wrap">
-        개인 독서 기록. 원문을 옮기지 않으며 원서를 대체하지 않는다.
+        <p>
+          {`${siteName} — 책 ${books.length}권, 요점과 실천 아이템 ${itemCount}개. ${builtAt} 기준. `}
+          <em>읽은 책만 올린다. 원문은 싣지 않는다. 정리는 사람이 검수한 뒤 배포된다.</em>
+          {' Astro 로 짓고 GitHub Pages 에 올린다. 활자는 Noto Serif KR, Pretendard, JetBrains Mono.'}
+        </p>
       </div>
     </footer>
   </body>

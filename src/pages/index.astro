@@ -11,23 +11,30 @@ const chapters = await getCollection('chapters');
 const chapterCount = (slug: string) => chapters.filter((c) => c.data.book === slug).length;
 ---
 
-<Base title="독서 노트" description="읽은 책을 챕터 단위로 정리해 남기는 개인 독서 기록">
-  <section class="narrow" style="margin-bottom: 2.5rem">
-    <p class="eyebrow">읽은 책 {books.length}권</p>
-    <p style="margin: 0; color: var(--muted)">
-      다 읽은 직후 한 번 정리해 두고, 이후에는 이 페이지들만 다시 본다. 원문은 올리지 않는다.
-    </p>
-  </section>
+<Base
+  title="독서 노트"
+  description="읽은 책을 챕터 단위로 정리해 남기는 개인 독서 기록"
+  current="books"
+>
+  <p class="page-lede">
+    다 읽은 직후 한 번 정리해 두고, 이후에는 이 페이지들만 다시 본다. 원문은 올리지 않는다.
+  </p>
 
   {
     books.length === 0 ? (
       <p class="meta">아직 올린 책이 없다.</p>
     ) : (
       <>
-        <div class="sort-bar">
-          <button type="button" data-sort="recent" aria-pressed="true">읽은 순</button>
-          <button type="button" data-sort="rating" aria-pressed="false">평점 순</button>
-        </div>
+        {books.length > 1 && (
+          <div class="sort-bar">
+            <button type="button" class="pill-button" data-sort="recent" aria-pressed="true">
+              읽은 순
+            </button>
+            <button type="button" class="pill-button" data-sort="rating" aria-pressed="false">
+              평점 순
+            </button>
+          </div>
+        )}
 
         <ul class="book-list" id="book-list">
           {books.map((book) => (
@@ -36,7 +43,12 @@ const chapterCount = (slug: string) => chapters.filter((c) => c.data.book === sl
               data-read-at={book.data.read_at.toISOString()}
               data-rating={book.data.rating}
             >
-              <a class="cover" href={url(`/books/${book.data.slug}/`)} aria-hidden="true" tabindex="-1">
+              <a
+                class="cover"
+                href={url(`/books/${book.data.slug}/`)}
+                aria-hidden="true"
+                tabindex="-1"
+              >
                 {book.data.cover ? (
                   <img src={url(book.data.cover)} alt="" loading="lazy" decoding="async" />
                 ) : (
@@ -44,15 +56,14 @@ const chapterCount = (slug: string) => chapters.filter((c) => c.data.book === sl
                 )}
               </a>
 
-              <div class="book-body">
+              <div>
                 <h2>
                   <a href={url(`/books/${book.data.slug}/`)}>{book.data.title}</a>
                 </h2>
                 <p class="meta">
                   {bookByline(book.data)}
-                  {book.data.original_title && ` · ${book.data.original_title}`}
                   {` · ${chapterCount(book.data.slug)}장`}
-                  {` · 읽은 날 ${formatDate(book.data.read_at)}`}
+                  {` · ${formatDate(book.data.read_at)} 읽음`}
                   <span class="rating"> {ratingMarks(book.data.rating)}</span>
                 </p>
                 <p class="one-liner">{book.data.one_liner}</p>
@@ -73,11 +84,11 @@ const chapterCount = (slug: string) => chapters.filter((c) => c.data.book === sl
 </Base>
 
 <script>
-  // 목록 정렬. 정적 페이지라 서버 왕복 없이 DOM 순서만 바꾼다.
+  // 정적 페이지라 서버 왕복 없이 DOM 순서만 바꾼다.
   const list = document.getElementById('book-list');
   const buttons = document.querySelectorAll<HTMLButtonElement>('.sort-bar button');
 
-  if (list) {
+  if (list && buttons.length) {
     const items = Array.from(list.children) as HTMLElement[];
 
     const sorters: Record<string, (a: HTMLElement, b: HTMLElement) => number> = {
@@ -89,8 +100,7 @@ const chapterCount = (slug: string) => chapters.filter((c) => c.data.book === sl
 
     buttons.forEach((button) => {
       button.addEventListener('click', () => {
-        const key = button.dataset.sort!;
-        items.sort(sorters[key]).forEach((item) => list.appendChild(item));
+        items.sort(sorters[button.dataset.sort!]).forEach((item) => list.appendChild(item));
         buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === button)));
       });
     });

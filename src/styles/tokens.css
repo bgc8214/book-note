@@ -1,0 +1,105 @@
+/* Hallmark · theme: Almanac · genre: editorial
+ * paper band: light · display style: roman-serif (KR) · accent hue: warm (50°)
+ * 이 파일이 시스템의 단일 출처다. 페이지 CSS 는 값을 직접 쓰지 않고 이름만 부른다.
+ */
+
+:root {
+  /* ── 색 ─────────────────────────────────────── */
+  --color-paper: oklch(97% 0.008 75);
+  --color-paper-2: oklch(94.5% 0.01 75);
+  --color-paper-3: oklch(91% 0.013 70);
+  --color-rule: oklch(86% 0.011 70);
+  --color-neutral: oklch(52% 0.012 65);
+  --color-muted: oklch(46% 0.014 60);
+  --color-ink: oklch(22% 0.014 55);
+
+  --color-accent: oklch(48% 0.13 50);
+  --color-accent-ink: oklch(97% 0.008 75);
+  --color-accent-soft: oklch(93% 0.022 60);
+  --color-focus: oklch(52% 0.16 50);
+
+  /* ── 활자 ───────────────────────────────────── */
+  --font-display: 'Noto Serif KR', ui-serif, Georgia, serif;
+  /* CDN 이 실어 주는 이름은 'Pretendard Variable' 이다. 먼저 부른다. */
+  --font-body: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont,
+    system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --weight-body: 400;
+  --weight-display: 600;
+
+  /* 1.25 장3도. 본문 17px — 한글은 라틴보다 크게 필요하다. */
+  --text-2xs: 0.75rem;
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-base: 1.0625rem;
+  --text-md: 1.1875rem;
+  --text-lg: 1.4375rem;
+  --text-xl: 1.75rem;
+  --text-2xl: 2.125rem;
+  --text-3xl: 2.625rem;
+  --text-display: clamp(2.25rem, 4vw + 1rem, 3.5rem);
+
+  --leading-display: 1.3;
+  --leading-body: 1.75;
+  --tracking-display: -0.02em;
+  /* 한글은 라틴만큼 자간을 벌리면 글자가 흩어진다. */
+  --tracking-label: 0.04em;
+
+  /* ── 간격 (4pt) ─────────────────────────────── */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --space-3xl: 7rem;
+
+  --page-gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --measure: 60ch;
+
+  /* ── 선·모서리 ──────────────────────────────── */
+  --rule-hair: 1px;
+  --border-active: 2px;
+  --shadow-cover: 0 1px 2px oklch(20% 0.02 60 / 0.18);
+  --shadow-cover-lg: 0 1px 3px oklch(20% 0.02 60 / 0.2);
+  --radius-sm: 3px;
+  --radius-card: 8px;
+  --radius-pill: 999px;
+
+  /* ── 모션 ───────────────────────────────────── */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-short: 180ms;
+  --dur-mid: 280ms;
+
+  /* ── 층위 ───────────────────────────────────── */
+  --z-base: 0;
+  --z-sticky: 10;
+  --z-overlay: 20;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* 휴는 고정. 명도와 채도만 움직인다. */
+    --color-paper: oklch(16% 0.01 60);
+    --color-paper-2: oklch(19% 0.011 60);
+    --color-paper-3: oklch(23% 0.012 60);
+    --color-rule: oklch(32% 0.012 60);
+    --color-neutral: oklch(64% 0.012 60);
+    --color-muted: oklch(70% 0.01 65);
+    --color-ink: oklch(93% 0.008 75);
+
+    --color-accent: oklch(72% 0.11 55);
+    --color-accent-ink: oklch(16% 0.01 60);
+    --color-accent-soft: oklch(26% 0.02 55);
+    --color-focus: oklch(75% 0.13 55);
+
+    /* 어두운 바탕 위의 밝은 글자는 광학적으로 굵어 보인다. */
+    --weight-body: 350;
+    --shadow-cover: 0 1px 2px oklch(4% 0.01 60 / 0.5);
+    --shadow-cover-lg: 0 1px 3px oklch(4% 0.01 60 / 0.55);
+  }
+}

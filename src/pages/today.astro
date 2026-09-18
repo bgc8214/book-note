@@ -46,13 +46,14 @@ for (const chapter of chapters) {
 const SHOWN = 5;
 ---
 
-<Base title="오늘 다시 보기" description="정리해둔 요점과 실천 아이템을 매일 몇 개씩 다시 꺼내 본다">
-  <section class="narrow" style="margin-bottom: 2rem">
-    <p class="eyebrow">오늘 다시 보기</p>
-    <p style="margin: 0; color: var(--muted)">
-      쌓인 {items.length}개의 요점과 실천 아이템 중 {SHOWN}개. 날짜에 따라 자동으로 바뀐다.
-    </p>
-  </section>
+<Base
+  title="오늘 다시 보기"
+  description="정리해둔 요점과 실천 아이템을 매일 몇 개씩 다시 꺼내 본다"
+  current="today"
+>
+  <p class="page-lede">
+    쌓인 {items.length}개 중 {SHOWN}개. 날짜에 따라 바뀌고, 같은 날에는 같은 것이 나온다.
+  </p>
 
   {
     items.length === 0 ? (
@@ -73,7 +74,9 @@ const SHOWN = 5;
           ))}
         </ul>
 
-        <button type="button" class="reshuffle" id="reshuffle">다른 {SHOWN}개 보기</button>
+        <button type="button" class="pill-button reshuffle" id="reshuffle">
+          다른 {SHOWN}개
+        </button>
       </>
     )
   }
@@ -81,16 +84,27 @@ const SHOWN = 5;
   {/* 스크립트가 없으면 전부 보여준다. 그 편이 빈 페이지보다 낫다. */}
   <noscript>
     <style>
-      .review-item { display: block !important; }
-      .reshuffle { display: none; }
+      .review-item {
+        display: block !important;
+      }
+      .reshuffle {
+        display: none;
+      }
     </style>
   </noscript>
 </Base>
+
+<style>
+  .reshuffle {
+    margin-top: var(--space-lg);
+  }
+</style>
 
 <script define:vars={{ shown: SHOWN }}>
   // 같은 날에는 같은 항목이 나온다. 날짜를 시드로 쓰기 때문에 서버가 필요 없다.
   const list = document.getElementById('review-list');
   const button = document.getElementById('reshuffle');
+
   if (list) {
     const items = Array.from(list.children);
 

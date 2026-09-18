@@ -27,65 +27,108 @@ const hasGlossary = (await getCollection('glossaries')).some((g) => g.data.book 
 const { Content } = await render(book);
 ---
 
-<Base title={data.title} description={data.one_liner}>
+<Base title={data.title} description={data.one_liner} current="books">
   <p class="crumbs"><a href={url('/')}>독서 노트</a> / {data.title}</p>
 
-  <header class="narrow" style="margin-bottom: 2.5rem">
-    <h1 style="font-size: 1.75rem; line-height: 1.35; margin: 0 0 0.4rem">{data.title}</h1>
-    <p class="meta">
-      {bookByline(data)}
-      {data.original_title && ` · ${data.original_title}`}
-      {data.translator && ` · 옮김 ${data.translator}`}
-      {data.publisher && ` · ${data.publisher}`}
-    </p>
-    <p class="meta">
-      읽은 날 {formatDate(data.read_at)}
-      <span class="rating"> {ratingMarks(data.rating)}</span>
-    </p>
-    {
-      data.tags.length > 0 && (
-        <ul class="tag-row">
-          {data.tags.map((tag) => (
-            <li class="tag">{tag}</li>
-          ))}
-        </ul>
-      )
-    }
-    <p style="margin: 1.5rem 0 0; font-size: 1.05rem">{data.one_liner}</p>
-  </header>
+  <div class="book-head">
+    {data.cover && <img class="book-head__cover" src={url(data.cover)} alt="" decoding="async" />}
 
-  <div class="prose narrow">
+    <div>
+      <h1 class="book-head__title">{data.title}</h1>
+      <p class="meta">
+        {bookByline(data)}
+        {data.original_title && ` · ${data.original_title}`}
+        {data.translator && ` · 옮김 ${data.translator}`}
+        {data.publisher && ` · ${data.publisher}`}
+      </p>
+      <p class="meta">
+        {formatDate(data.read_at)} 읽음
+        <span class="rating"> {ratingMarks(data.rating)}</span>
+      </p>
+      {
+        data.tags.length > 0 && (
+          <ul class="tag-row">
+            {data.tags.map((tag) => (
+              <li class="tag">{tag}</li>
+            ))}
+          </ul>
+        )
+      }
+      <p class="book-head__liner">{data.one_liner}</p>
+    </div>
+  </div>
+
+  <div class="prose measure book-head__note">
     <Content />
   </div>
 
-  <section style="margin-top: 3rem">
-    <p class="eyebrow">챕터</p>
-    {
-      chapters.length === 0 ? (
-        <p class="meta">아직 챕터가 없다.</p>
-      ) : (
-        <ul class="chapter-list">
-          {chapters.map((chapter) => (
-            <li>
+  {
+    chapters.length === 0 ? (
+      <p class="meta">아직 챕터가 없다.</p>
+    ) : (
+      <ul class="chapter-list">
+        {chapters.map((chapter) => (
+          <li>
+            <a href={url(`/books/${data.slug}/${chapter.data.slug}/`)}>
               <span class="num">{String(chapter.data.order).padStart(2, '0')}</span>
-              <a href={url(`/books/${data.slug}/${chapter.data.slug}/`)}>
+              <span class="title">
                 {chapter.data.title}
                 <span class="one-liner">{chapterOneLiner(chapter.body)}</span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      )
-    }
-  </section>
-
-  {
-    hasGlossary && (
-      <p style="margin-top: 2.5rem">
-        <a href={url(`/books/${data.slug}/glossary/`)}>이 책의 용어집 →</a>
-      </p>
+              </span>
+            </a>
+          </li>
+        ))}
+        {hasGlossary && (
+          <li>
+            <a href={url(`/books/${data.slug}/glossary/`)}>
+              <span class="num">—</span>
+              <span class="title">용어집</span>
+            </a>
+          </li>
+        )}
+      </ul>
     )
   }
 
   <Disclaimer title={data.title} buyUrl={data.buy_url} />
 </Base>
+
+<style>
+  .book-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+  }
+
+  @media (min-width: 40rem) {
+    .book-head {
+      grid-template-columns: 132px minmax(0, 1fr);
+      gap: var(--space-lg);
+      align-items: start;
+    }
+  }
+
+  .book-head__cover {
+    width: 132px;
+    aspect-ratio: 350 / 496;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-cover-lg);
+  }
+
+  .book-head__title {
+    font-size: var(--text-2xl);
+    margin: 0 0 var(--space-2xs);
+  }
+
+  .book-head__liner {
+    margin: var(--space-md) 0 0;
+    max-width: 50ch;
+    font-size: var(--text-md);
+  }
+
+  .book-head__note {
+    margin-bottom: var(--space-2xl);
+  }
+</style>

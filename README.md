@@ -7,6 +7,7 @@
 
 - 기획: [job-radar-prd.md](./job-radar-prd.md)
 - 에이전트 계약(스키마·작성 규칙·중단 조건): [AGENTS.md](./AGENTS.md)
+- 디자인 시스템(색·활자·간격·모션): [design.md](./design.md) — 페이지를 고치기 전에 읽는다
 
 ## 한 권 올리는 흐름
 
@@ -43,6 +44,7 @@ content/
 src/
   content.config.ts             # 프론트매터 스키마 (계약)
   lib/content.mjs               # 사이트와 scripts 가 공유하는 순수 함수
+  styles/tokens.css             # 디자인 토큰 (단일 출처)
   pages/                        # 책 목록 / 책 / 챕터 / 용어집 / 오늘 다시 보기
 public/covers/                  # 책 표지 썸네일 (PDF 1쪽에서 추출)
 scripts/
