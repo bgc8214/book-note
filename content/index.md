@@ -152,3 +152,16 @@
 - 7장 클로드 코드로 레벨업하기 — 도구를 바꾸는 이유는 성능만이 아니라 비용이다. → `books/vibe-coding-outsourcing/ch07-claude-code.md`
 - 8장 외주 개발, 끝까지 살아남기 — 기술보다 오래 남는 것은 태도다. → `books/vibe-coding-outsourcing/ch08-surviving.md`
 - 용어집 → `books/vibe-coding-outsourcing/glossary.md`
+
+## 나는 왜 혼자가 편할까? (오카다 다카시, 2015) — why-i-prefer-being-alone
+태그: 애착이론, 심리학, 인간관계, 회피형 · 읽은 날: 2026-09-18 · 평점: 3
+한 줄: 친밀한 관계를 피하는 성향을 성격이 아니라 애착 성향으로 설명하고, 그 형성 배경과 사랑·직장·회복 과정을 따라간 책
+
+- 1장 회피형 인간의 탄생 — 왜, 혼자가 편한 걸까? — 대인 관계가 늘 안정적이고 친밀한 관계를 즐기는 사람이 있는 반면, 늘 불안정하고 표면적인 관계에 머무는 사람이 있다. → `books/why-i-prefer-being-alone/ch01-birth-of-avoidant.md`
+- 2장 회피형 인간의 성장 배경 — 왜, 상처 입는 게 두려운 걸까 — 회피형은 타고나는 것이 아니라 만들어진다. → `books/why-i-prefer-being-alone/ch02-background.md`
+- 3장 현대사회와 회피형 인간 — 왜, 기계에만 의존하는 걸까? — 회피형이 늘어나는 것은 개인의 문제가 아니라 환경의 문제이기도 하다. → `books/why-i-prefer-being-alone/ch03-modern-society.md`
+- 4장 회피형 인간의 사랑 — 왜, 결혼과 아이를 거부하는 걸까? — 회피형이 자녀를 대하는 습성은 배우자에게도 똑같이 나타난다. → `books/why-i-prefer-being-alone/ch04-love.md`
+- 5장 회피형 인간의 직장 생활 — 왜, 만사가 귀찮은 걸까? — 회피형의 직장 생활은 감정을 배제하는 습관으로 드러난다. → `books/why-i-prefer-being-alone/ch05-work.md`
+- 6장 모든 것은 인간관계에서 시작되었다 — 왜, 인간은 혼자 살 수 없는 걸까? — 극복에는 두 과제가 있다. → `books/why-i-prefer-being-alone/ch06-relationships.md`
+- 7장 상처받지 않는 힘은 어디서 나올까? — 당신의 안전 기지를 찾아라 — 같은 심리 기법을 써도 사람에 따라 결과가 갈린다. → `books/why-i-prefer-being-alone/ch07-secure-base.md`
+- 용어집 → `books/why-i-prefer-being-alone/glossary.md`
