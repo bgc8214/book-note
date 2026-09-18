@@ -18,6 +18,33 @@ export function chapterOneLiner(body = '') {
   return (m ? m[0] : idea).trim();
 }
 
+/** 지정한 '## <이름>' 섹션의 본문을 뽑는다. 없으면 빈 문자열. */
+export function section(body = '', name) {
+  const re = new RegExp(`^##\\s*${name}[^\\n]*\\n([\\s\\S]*?)(?=\\n##\\s|$(?![\\s\\S]))`, 'm');
+  const m = body.match(re);
+  return m ? m[1].trim() : '';
+}
+
+/**
+ * 섹션의 불릿 항목을 배열로. 체크리스트 표시([ ])는 떼어낸다.
+ * 여러 줄에 걸친 항목은 한 줄로 합친다.
+ */
+export function bullets(body = '', name) {
+  const text = section(body, name);
+  if (!text) return [];
+
+  const out = [];
+  for (const line of text.split(/\r?\n/)) {
+    const started = line.match(/^\s*(?:[-*+]|\d+\.)\s+(.*)$/);
+    if (started) {
+      out.push(started[1].replace(/^\[[ xX]\]\s*/, '').trim());
+    } else if (out.length && line.trim()) {
+      out[out.length - 1] += ' ' + line.trim(); // 이어지는 줄
+    }
+  }
+  return out.filter(Boolean);
+}
+
 /** 2026-09-14 형태로. 사이트 전체에서 이 표기만 쓴다. */
 export function formatDate(d) {
   return new Date(d).toISOString().slice(0, 10);

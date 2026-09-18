@@ -69,3 +69,35 @@ const { Content } = await render(chapter);
 
   <Disclaimer title={book.data.title} buyUrl={book.data.buy_url} />
 </Base>
+
+<script define:vars={{ storageKey: `check:${bookSlug}/${chapter.data.slug}` }}>
+  // 실천 아이템은 읽을거리가 아니라 할 일이다. 체크 상태를 이 브라우저에 남긴다.
+  // (기기 간 동기화는 하지 않는다. 서버가 없고, 있을 이유도 없다.)
+  const boxes = document.querySelectorAll('.prose input[type="checkbox"]');
+
+  boxes.forEach((box, i) => {
+    const key = `${storageKey}:${i}`;
+    box.disabled = false;
+
+    const apply = (done) => {
+      box.checked = done;
+      box.closest('li')?.classList.toggle('done', done);
+    };
+
+    try {
+      apply(localStorage.getItem(key) === '1');
+    } catch {
+      /* 저장소를 못 쓰면 체크만 되고 기억은 안 한다 */
+    }
+
+    box.addEventListener('change', () => {
+      apply(box.checked);
+      try {
+        if (box.checked) localStorage.setItem(key, '1');
+        else localStorage.removeItem(key);
+      } catch {
+        /* 무시 */
+      }
+    });
+  });
+</script>

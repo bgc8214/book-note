@@ -5,6 +5,7 @@ author: 이남희
 publisher: 한빛미디어
 year: 2025
 slug: tech-interview-note-for-developers
+cover: /covers/tech-interview-note-for-developers.jpg
 read_at: 2026-09-18
 rating: 4
 tags: [기술면접, 커리어, 이직, 백엔드]

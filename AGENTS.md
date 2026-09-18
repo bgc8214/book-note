@@ -46,6 +46,18 @@ scripts/extract.sh ~/books/inbox/<file>.pdf <book-slug> --mode technical
   들어가면 되돌리기 어렵고, 저작권 측면에서 가장 피해야 할 형태다.
 - 아카이브는 지우지 않고 남긴다. 나중에 원문까지 파고들 일이 생기면 그 폴더를 열어주면 된다.
 
+표지도 같은 PDF 에서 뽑는다. 목록에 쓸 썸네일 크기(가로 360px)로만 만들고 원본 해상도로
+올리지 않는다.
+
+```
+scripts/extract-cover.sh <pdf> <book-slug>                 # 스프레드 PDF: 1쪽 오른쪽 절반
+scripts/extract-cover.sh <pdf> <book-slug> --half none     # 한 쪽짜리 PDF
+scripts/extract-cover.sh <pdf> <book-slug> --page 3        # 표지가 1쪽이 아닐 때
+```
+
+먼저 앞 몇 쪽을 이미지로 뽑아 어디가 표지인지 눈으로 확인한 뒤 실행한다. 저장 경로는
+`public/covers/<book-slug>.jpg` 이고, 프론트매터에 `cover: /covers/<book-slug>.jpg` 를 넣는다.
+
 ## 2. 구조화
 
 챕터를 **하나씩** 처리한다. 한 챕터의 결과를 다음 챕터 처리 시 컨텍스트로 넘기지 않는다.
@@ -81,7 +93,7 @@ translator: 이한이
 publisher: 비즈니스북스
 year: 2019
 slug: atomic-habits               # 필수, 디렉토리명과 같아야 한다
-cover: /covers/atomic-habits.jpg
+cover: /covers/atomic-habits.jpg  # scripts/extract-cover.sh 로 생성
 read_at: 2026-09-14               # 필수, 다 읽은 날
 rating: 4                         # 필수, 1-5
 tags: [습관, 자기계발, 행동설계]
