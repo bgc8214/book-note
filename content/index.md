@@ -117,3 +117,17 @@
 - 9장 수익화 글 운영 전략 — 수익화 글만 올리면 알고리즘 노출이 줄고, 그보다 먼저 사람들의 인식이 나빠진다. → `books/threads-branding/ch09-content-mix.md`
 - 10장 다른 SNS로 확장하기 — 스레드는 종착지가 아니라 기회비용이 가장 낮은 출발점이다. → `books/threads-branding/ch10-cross-platform.md`
 - 용어집 → `books/threads-branding/glossary.md`
+
+## 요즘 바이브 코딩 — 커서 × 클로드 코드 실전 외주 돈 벌기 (미확인, 2025) — vibe-coding-outsourcing
+태그: 바이브코딩, AI도구, 외주, 부업, 커서, 클로드코드 · 읽은 날: 2026-09-18 · 평점: 3
+한 줄: 프로그래밍을 전혀 모르던 15년차 직장인이 AI 코딩 도구로 외주 개발 수익을 만든 과정을, 도구 설정부터 단가 산정과 고객 응대까지 절차로 정리한 책
+
+- 1장 평범한 15년차 40대 차장의 이야기 — 이 책의 출발점은 거창한 목표가 아니라 개인적인 불편이었다. → `books/vibe-coding-outsourcing/ch01-my-story.md`
+- 2장 바이브 코딩이 뭐죠? — 바이브 코딩은 인공지능이 코드를 작성하고 인간이 가이드하는 방식이다. → `books/vibe-coding-outsourcing/ch02-what-is-vibe-coding.md`
+- 3장 첫 프로젝트 따내기와 단가 정하기 — 여기가 이 책에서 가장 실용적인 부분이다. → `books/vibe-coding-outsourcing/ch03-first-project-and-pricing.md`
+- 4장 개발 환경 갖추기 — 커서·파이썬·깃 — 도구를 고르는 기준과 설정이 이 장의 내용이다. → `books/vibe-coding-outsourcing/ch04-setup.md`
+- 5장 10만 원급 외주 — 매크로와 엑셀 자동화 — 첫 수익 구간의 일감은 화면 조작 매크로와 엑셀 자동화다. → `books/vibe-coding-outsourcing/ch05-macro-and-excel.md`
+- 6장 20만 원급 외주 — API 연동 — 단가가 오르는 구간은 API 연동이다. → `books/vibe-coding-outsourcing/ch06-api-projects.md`
+- 7장 클로드 코드로 레벨업하기 — 도구를 바꾸는 이유는 성능만이 아니라 비용이다. → `books/vibe-coding-outsourcing/ch07-claude-code.md`
+- 8장 외주 개발, 끝까지 살아남기 — 기술보다 오래 남는 것은 태도다. → `books/vibe-coding-outsourcing/ch08-surviving.md`
+- 용어집 → `books/vibe-coding-outsourcing/glossary.md`
