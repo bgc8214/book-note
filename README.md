@@ -3,6 +3,8 @@
 읽은 책을 챕터 단위로 정리해 남기는 개인 사이트. 책을 다 읽은 직후 한 번만 구조화 비용을
 치르고, 이후에는 PDF 대신 이 사이트를 다시 본다.
 
+**https://bgc8214.github.io/book-note/**
+
 - 기획: [job-radar-prd.md](./job-radar-prd.md)
 - 에이전트 계약(스키마·작성 규칙·중단 조건): [AGENTS.md](./AGENTS.md)
 
@@ -49,6 +51,16 @@ scripts/
 
 `content/books/sample-reading-notes/` 는 스키마 렌더링 확인용 가상의 책이다. 실제 첫 책을
 올린 뒤 지우면 된다.
+
+## 배포
+
+`main` 에 푸시하면 GitHub Actions 가 `npm run build`(validate → index → 빌드)를 돌리고
+GitHub Pages 로 올린다. **스키마를 어긴 콘텐츠는 validate 에서 걸려 배포되지 않는다.**
+
+서브패스(`/book-note/`) 배포라 `astro.config.mjs` 에 `base` 가 있다. 마크다운 본문의
+`/books/...` 링크에는 hast 플러그인(`src/lib/hast-base-links.mjs`)이 base 를 붙이므로
+**콘텐츠는 base 를 모른다.** 커스텀 도메인을 붙일 때는 `astro.config.mjs` 의 `SITE` 를
+바꾸고 `BASE` 를 `''` 로 두면 되고, 마크다운은 손대지 않는다.
 
 ## 원칙
 
