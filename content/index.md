@@ -3,6 +3,15 @@
 자동 생성 파일이다. 직접 고치지 말고 `npm run index` 로 다시 만든다.
 에이전트는 이 파일에서 열어야 할 파일을 정한 뒤 그 파일만 연다. 경로는 `content/` 기준이다.
 
+## 혹시, 돈 얘기해도 될까요? (주언규, 2025) — can-we-talk-about-money
+태그: 돈, 자기계발, 슬럼프, 자산 · 읽은 날: 2026-09-18 · 평점: 3
+한 줄: "돈을 쫓지 마라"는 조언이 어떤 사람에게는 독이 된다는 데서 출발해, 슬럼프·정체기·소비를 다루는 관점을 정리한 에세이
+
+- 1장 내가 계속 돈 이야기를 하는 이유 — "돈을 쫓지 마라, 그러면 돈이 따라올 것이다." 저자도 그 말을 믿었지만 결과적으로 그 조언이 독이 됐다고 말한다. → `books/can-we-talk-about-money/ch01-why-i-talk-about-money.md`
+- 2장 슬럼프에서 빠져나오려면 — 슬럼프는 쉬는 시간이 아니다. → `books/can-we-talk-about-money/ch02-getting-out-of-slump.md`
+- 3장 지금 오르막길을 버티는 사람에게 — 물은 100도가 되어야 끓지만, 90도의 물과 20도의 물은 겉보기에 같다. → `books/can-we-talk-about-money/ch03-enduring-the-climb.md`
+- 4장 인생의 주인이 되어야 할 때 — 시간은 돌아오지 않고, 월급은 고생의 대가가 아니라 삶과 교환한 것이다. → `books/can-we-talk-about-money/ch04-owning-your-life.md`
+
 ## 그릿 (앤절라 더크워스, 2019) — grit
 태그: 끈기, 열정, 성취, 심리학, 자기계발 · 읽은 날: 2026-09-18 · 평점: 4
 한 줄: 재능이 아니라 열정과 끈기의 결합(그릿)이 성취를 만든다는 주장을, 웨스트포인트 연구와 성취 등식으로 밀고 간 책
@@ -152,6 +161,17 @@
 - 7장 클로드 코드로 레벨업하기 — 도구를 바꾸는 이유는 성능만이 아니라 비용이다. → `books/vibe-coding-outsourcing/ch07-claude-code.md`
 - 8장 외주 개발, 끝까지 살아남기 — 기술보다 오래 남는 것은 태도다. → `books/vibe-coding-outsourcing/ch08-surviving.md`
 - 용어집 → `books/vibe-coding-outsourcing/glossary.md`
+
+## 바이브코딩이 바꾼 부의 공식 (강기태, 이수석, 2025) — vibe-coding-wealth
+태그: 바이브코딩, 1인창업, 마케팅, 수익화, AI도구 · 읽은 날: 2026-09-18 · 평점: 3
+한 줄: 코드를 모르는 사람이 AI 도구로 제품을 만들고 파는 과정을, 문제를 보는 눈에서 마케팅 퍼널과 첫 매출까지 단계로 정리한 책
+
+- 1장 왜 지금인가 — 기회와 다섯 가지 길 — 1~2장에 해당한다. → `books/vibe-coding-wealth/ch01-why-now.md`
+- 2장 문제를 보는 눈이 곧 자본 — 내 좌표 찾기 — 3~4장이다. → `books/vibe-coding-wealth/ch02-problem-as-capital.md`
+- 3장 바이브코딩 — 도구 고르기와 AI에게 일 시키는 기술 — 5~7장이다. → `books/vibe-coding-wealth/ch03-vibe-coding-craft.md`
+- 4장 다섯 가지 벽과 첫 프로젝트 — 8~10장이다. → `books/vibe-coding-wealth/ch04-walls-and-first-project.md`
+- 5장 파는 법 — 퍼널, 메시지, 트래픽, 그리고 첫 매출 — 11~18장이다. → `books/vibe-coding-wealth/ch05-selling.md`
+- 용어집 → `books/vibe-coding-wealth/glossary.md`
 
 ## 나는 왜 혼자가 편할까? (오카다 다카시, 2015) — why-i-prefer-being-alone
 태그: 애착이론, 심리학, 인간관계, 회피형 · 읽은 날: 2026-09-18 · 평점: 3
