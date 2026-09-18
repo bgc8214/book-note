@@ -1,0 +1,33 @@
+# build output
+dist/
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
+.DS_Store
+
+# jetbrains setting folder
+.idea/
+
+# 추출 원문·중간 산출물 — 저장소에 들어가면 안 된다.
+# 정상 경로는 ~/books/archive/ 이지만, 실수로 프로젝트 안에 두는 경우를 막는다.
+# 앞의 / 는 저장소 루트만 가리킨다. content/books, src/pages/books 는 건드리지 않는다.
+/books/
+/inbox/
+/archive/
+*.raw.txt
+raw.txt

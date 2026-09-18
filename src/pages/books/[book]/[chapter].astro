@@ -1,0 +1,71 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import Disclaimer from '../../../components/Disclaimer.astro';
+import { chapterOneLiner } from '../../../lib/content.mjs';
+import { url } from '../../../lib/url.mjs';
+
+export async function getStaticPaths() {
+  const books = await getCollection('books');
+  const chapters = await getCollection('chapters');
+
+  return books.flatMap((book) => {
+    const own = chapters
+      .filter((c) => c.data.book === book.data.slug)
+      .sort((a, b) => a.data.order - b.data.order);
+
+    return own.map((chapter, i) => ({
+      params: { book: book.data.slug, chapter: chapter.data.slug },
+      props: { book, chapter, prev: own[i - 1] ?? null, next: own[i + 1] ?? null },
+    }));
+  });
+}
+
+type Props = {
+  book: CollectionEntry<'books'>;
+  chapter: CollectionEntry<'chapters'>;
+  prev: CollectionEntry<'chapters'> | null;
+  next: CollectionEntry<'chapters'> | null;
+};
+
+const { book, chapter, prev, next } = Astro.props;
+const bookSlug = book.data.slug;
+const { Content } = await render(chapter);
+---
+
+<Base
+  title={`${chapter.data.title} — ${book.data.title}`}
+  description={chapterOneLiner(chapter.body) || book.data.one_liner}
+>
+  <p class="crumbs">
+    <a href={url('/')}>독서 노트</a> / <a href={url(`/books/${bookSlug}/`)}>{book.data.title}</a> /
+    {chapter.data.order}장
+  </p>
+
+  <article class="prose narrow">
+    <p class="eyebrow">{chapter.data.order}장</p>
+    <h1>{chapter.data.title}</h1>
+    <Content />
+  </article>
+
+  <nav class="chapter-nav narrow">
+    {
+      prev && (
+        <a class="prev" href={url(`/books/${bookSlug}/${prev.data.slug}/`)}>
+          <span class="dir">← {prev.data.order}장</span>
+          {prev.data.title}
+        </a>
+      )
+    }
+    {
+      next && (
+        <a class="next" href={url(`/books/${bookSlug}/${next.data.slug}/`)}>
+          <span class="dir">{next.data.order}장 →</span>
+          {next.data.title}
+        </a>
+      )
+    }
+  </nav>
+
+  <Disclaimer title={book.data.title} buyUrl={book.data.buy_url} />
+</Base>

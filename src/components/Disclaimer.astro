@@ -1,0 +1,16 @@
+---
+interface Props {
+  title: string;
+  buyUrl?: string;
+}
+
+const { title, buyUrl } = Astro.props;
+---
+
+<aside class="disclaimer narrow">
+  <p>
+    이 글은 《{title}》을 읽고 남긴 개인 기록이다. 원문 발췌가 아니라 내 정리이며, 원서를
+    대체하지 않는다.
+    {buyUrl && <a href={buyUrl} rel="nofollow noopener" target="_blank">원서 보러 가기 →</a>}
+  </p>
+</aside>

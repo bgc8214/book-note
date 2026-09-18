@@ -1,0 +1,91 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import Disclaimer from '../../../components/Disclaimer.astro';
+import { bookByline, chapterOneLiner, formatDate, ratingMarks } from '../../../lib/content.mjs';
+import { url } from '../../../lib/url.mjs';
+
+export async function getStaticPaths() {
+  const books = await getCollection('books');
+  return books.map((book) => ({
+    params: { book: book.data.slug },
+    props: { book },
+  }));
+}
+
+type Props = { book: CollectionEntry<'books'> };
+
+const { book } = Astro.props;
+const { data } = book;
+
+const chapters = (await getCollection('chapters'))
+  .filter((c) => c.data.book === data.slug)
+  .sort((a, b) => a.data.order - b.data.order);
+
+const hasGlossary = (await getCollection('glossaries')).some((g) => g.data.book === data.slug);
+
+const { Content } = await render(book);
+---
+
+<Base title={data.title} description={data.one_liner}>
+  <p class="crumbs"><a href={url('/')}>독서 노트</a> / {data.title}</p>
+
+  <header class="narrow" style="margin-bottom: 2.5rem">
+    <h1 style="font-size: 1.75rem; line-height: 1.35; margin: 0 0 0.4rem">{data.title}</h1>
+    <p class="meta">
+      {bookByline(data)}
+      {data.original_title && ` · ${data.original_title}`}
+      {data.translator && ` · 옮김 ${data.translator}`}
+      {data.publisher && ` · ${data.publisher}`}
+    </p>
+    <p class="meta">
+      읽은 날 {formatDate(data.read_at)}
+      <span class="rating"> {ratingMarks(data.rating)}</span>
+    </p>
+    {
+      data.tags.length > 0 && (
+        <ul class="tag-row">
+          {data.tags.map((tag) => (
+            <li class="tag">{tag}</li>
+          ))}
+        </ul>
+      )
+    }
+    <p style="margin: 1.5rem 0 0; font-size: 1.05rem">{data.one_liner}</p>
+  </header>
+
+  <div class="prose narrow">
+    <Content />
+  </div>
+
+  <section style="margin-top: 3rem">
+    <p class="eyebrow">챕터</p>
+    {
+      chapters.length === 0 ? (
+        <p class="meta">아직 챕터가 없다.</p>
+      ) : (
+        <ul class="chapter-list">
+          {chapters.map((chapter) => (
+            <li>
+              <span class="num">{String(chapter.data.order).padStart(2, '0')}</span>
+              <a href={url(`/books/${data.slug}/${chapter.data.slug}/`)}>
+                {chapter.data.title}
+                <span class="one-liner">{chapterOneLiner(chapter.body)}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </section>
+
+  {
+    hasGlossary && (
+      <p style="margin-top: 2.5rem">
+        <a href={url(`/books/${data.slug}/glossary/`)}>이 책의 용어집 →</a>
+      </p>
+    )
+  }
+
+  <Disclaimer title={data.title} buyUrl={data.buy_url} />
+</Base>

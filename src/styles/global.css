@@ -1,0 +1,375 @@
+:root {
+  --bg: #fbfaf7;
+  --surface: #ffffff;
+  --text: #1b1a17;
+  --muted: #6b675e;
+  --line: #e4e0d7;
+  --accent: #8a5a2b;
+  --accent-soft: #f2ece2;
+
+  --font-sans: ui-sans-serif, -apple-system, 'Apple SD Gothic Neo', 'Pretendard',
+    'Segoe UI', 'Noto Sans KR', sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --measure: 34rem;
+  --radius: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15140f;
+    --surface: #1d1c17;
+    --text: #eceae4;
+    --muted: #9c978c;
+    --line: #322f27;
+    --accent: #d9a566;
+    --accent-soft: #272319;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.75;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+a {
+  color: inherit;
+  text-decoration-color: var(--line);
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  text-decoration-color: var(--accent);
+}
+
+.wrap {
+  width: min(100% - 2.5rem, calc(var(--measure) + 8rem));
+  margin-inline: auto;
+}
+
+.narrow {
+  max-width: var(--measure);
+}
+
+/* ── 헤더 / 푸터 ───────────────────────────────── */
+
+.site-header {
+  border-bottom: 1px solid var(--line);
+  padding: 1.1rem 0;
+  margin-bottom: 3rem;
+}
+
+.site-header .wrap {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.site-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.site-header nav {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.site-footer {
+  margin-top: 5rem;
+  padding: 2rem 0 3rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* ── 공통 조각 ─────────────────────────────────── */
+
+.eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 0.5rem;
+}
+
+.meta {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.meta a {
+  color: var(--muted);
+}
+
+.crumbs {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0;
+}
+
+.tag {
+  font-size: 0.75rem;
+  color: var(--muted);
+  background: var(--accent-soft);
+  border-radius: 999px;
+  padding: 0.1rem 0.6rem;
+}
+
+.rating {
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  font-size: 0.85rem;
+}
+
+/* ── 책 목록 ───────────────────────────────────── */
+
+.book-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1.75rem;
+}
+
+.book-card {
+  border-top: 1px solid var(--line);
+  padding-top: 1.5rem;
+}
+
+.book-card h2 {
+  font-size: 1.25rem;
+  line-height: 1.4;
+  margin: 0 0 0.3rem;
+}
+
+.book-card h2 a {
+  text-decoration: none;
+}
+
+.book-card h2 a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+}
+
+.book-card .one-liner {
+  margin: 0.6rem 0 0;
+  color: var(--text);
+}
+
+/* ── 챕터 목록 ─────────────────────────────────── */
+
+.chapter-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1.1rem;
+}
+
+.chapter-list li {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: 0.75rem;
+  align-items: baseline;
+}
+
+.chapter-list .num {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.chapter-list a {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.chapter-list a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+}
+
+.chapter-list .one-liner {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+/* ── 본문(마크다운) ────────────────────────────── */
+
+.prose h1 {
+  font-size: 1.6rem;
+  line-height: 1.35;
+  margin: 0 0 0.5rem;
+}
+
+.prose h2 {
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  margin: 2.75rem 0 0.75rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.prose h3 {
+  font-size: 1rem;
+  margin: 2rem 0 0.5rem;
+}
+
+.prose p {
+  margin: 0 0 1rem;
+}
+
+.prose ul,
+.prose ol {
+  margin: 0 0 1rem;
+  padding-left: 1.2rem;
+}
+
+.prose li {
+  margin-bottom: 0.45rem;
+}
+
+.prose li::marker {
+  color: var(--muted);
+}
+
+/* 실천 아이템 — GFM 체크리스트 */
+.prose li:has(> input[type='checkbox']) {
+  list-style: none;
+  margin-left: -1.2rem;
+  padding-left: 1.7rem;
+  position: relative;
+}
+
+.prose li > input[type='checkbox'] {
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  accent-color: var(--accent);
+}
+
+/* 용어 — 정의 목록 */
+.prose dl {
+  margin: 0 0 1rem;
+}
+
+.prose dt {
+  font-weight: 600;
+  margin-top: 0.9rem;
+}
+
+.prose dd {
+  margin: 0.15rem 0 0;
+  color: var(--muted);
+}
+
+.prose blockquote {
+  margin: 1.25rem 0;
+  padding: 0.1rem 0 0.1rem 1rem;
+  border-left: 2px solid var(--line);
+  color: var(--muted);
+}
+
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background: var(--accent-soft);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}
+
+.prose pre {
+  overflow-x: auto;
+  padding: 1rem;
+  border-radius: var(--radius);
+}
+
+.prose pre code {
+  background: none;
+  padding: 0;
+}
+
+.prose hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 2.5rem 0;
+}
+
+/* ── 챕터 이동 ─────────────────────────────────── */
+
+.chapter-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.88rem;
+}
+
+.chapter-nav a {
+  text-decoration: none;
+  max-width: 45%;
+}
+
+.chapter-nav .dir {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.chapter-nav .next {
+  margin-left: auto;
+  text-align: right;
+}
+
+/* ── 고지 ──────────────────────────────────────── */
+
+.disclaimer {
+  margin-top: 3.5rem;
+  padding: 1.1rem 1.25rem;
+  background: var(--accent-soft);
+  border-radius: var(--radius);
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+.disclaimer p {
+  margin: 0;
+}
+
+.disclaimer a {
+  color: var(--accent);
+}
