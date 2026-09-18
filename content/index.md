@@ -64,3 +64,19 @@
 - 8장 기술 면접 이후 만나게 될 난관 — 2차 면접의 질문에는 대체로 정답이 없다. → `books/tech-interview-note-for-developers/ch08-after-tech-interview.md`
 - 9장 AI 시대의 개발자, AI 도구 활용으로 업무 능력 향상하기 — AI 도구가 이력서와 코드와 문서를 대신 만들어줄수록, 채용에서 평가받는 대상은 결과물이 아니라 그 결과물을 설명하고 검증하는 능력으로 옮겨간다. → `books/tech-interview-note-for-developers/ch09-ai-era-developer.md`
 - 용어집 → `books/tech-interview-note-for-developers/glossary.md`
+
+## 개발 7년차, 매니저 1일차 (카미유 푸르니에, 2020) — the-managers-path
+태그: 매니지먼트, 리더십, 커리어, 조직 · 읽은 날: 2026-09-18 · 평점: 5
+한 줄: 멘토에서 테크리드, 팀장, 여러 팀 관리, 매니저 관리, 시니어 리더까지 직급 단계별로 무엇이 달라지는지 정리한 개발 관리 안내서
+
+- 1장 관리 101 — 관리를 배우는 첫걸음은 관리하는 법이 아니라 관리받는 법이다. → `books/the-managers-path/ch01-management-101.md`
+- 2장 멘토링 — 관리 업무는 직책을 받는 날 시작되지 않는다. → `books/the-managers-path/ch02-mentoring.md`
+- 3장 테크리드 — 테크리드는 매니저가 아니지만 관리 기술이 필요한 자리다. → `books/the-managers-path/ch03-tech-lead.md`
+- 4장 사람 관리 — 개발 팀장이 되면 그 자리를 승진으로 여기고 과제나 문제에서 연공서열을 따지게 된다. → `books/the-managers-path/ch04-managing-people.md`
+- 5장 팀 관리 — 한두 명을 관리하는 것과 팀 전체를 관리하는 것은 차원이 다르다. → `books/the-managers-path/ch05-managing-a-team.md`
+- 6장 여러 팀 관리 — 여러 팀의 실무를 책임지면 코딩할 시간이 사라진다. → `books/the-managers-path/ch06-managing-multiple-teams.md`
+- 7장 매니저 관리 — 매니저를 관리하는 일이 예전 일과 비슷하다고 생각하고 맡으면 실수다. → `books/the-managers-path/ch07-managing-managers.md`
+- 8장 시니어 리더십 — 시니어 리더십은 하나의 역할이 아니다. → `books/the-managers-path/ch08-senior-leadership.md`
+- 9장 문화 개선 — 문화를 만드는 것도 시니어 개발 리더의 역할이다. → `books/the-managers-path/ch09-bootstrapping-culture.md`
+- 10장 결론 — 저자가 배운 가장 중요한 교훈은 하나로 압축된다. → `books/the-managers-path/ch10-conclusion.md`
+- 용어집 → `books/the-managers-path/glossary.md`
