@@ -80,3 +80,19 @@
 - 9장 문화 개선 — 문화를 만드는 것도 시니어 개발 리더의 역할이다. → `books/the-managers-path/ch09-bootstrapping-culture.md`
 - 10장 결론 — 저자가 배운 가장 중요한 교훈은 하나로 압축된다. → `books/the-managers-path/ch10-conclusion.md`
 - 용어집 → `books/the-managers-path/glossary.md`
+
+## 3줄의 글로 수익을 만드는 스레드 브랜딩 마케팅 (이동영, 2025) — threads-branding
+태그: 스레드, 마케팅, 브랜딩, 수익화, SNS · 읽은 날: 2026-09-18 · 평점: 3
+한 줄: 텍스트 기반 SNS 스레드의 알고리즘 특성(휘발성·재도전 가능)에서 출발해 브랜딩·마케팅 퍼널·수익화까지 실전 절차로 정리한 책
+
+- 1장 기회의 SNS, 스레드 알아보기 — 스레드는 텍스트 중심 SNS다. → `books/threads-branding/ch01-what-is-threads.md`
+- 2장 프로필 세팅부터 팔로워 1,000명까지 — 팔로워 1,000명은 목표가 아니라 연습의 부산물로 다뤄진다. → `books/threads-branding/ch02-profile-and-followers.md`
+- 3장 스레드 계정 브랜딩하기 — 브랜딩은 싸게 파는 경쟁에서 빠져나오는 수단으로 제시된다. → `books/threads-branding/ch03-branding.md`
+- 4장 상대가 원하는 글쓰기 — 글의 출발점은 내가 하고 싶은 말이 아니라 상대의 문제다. → `books/threads-branding/ch04-writing.md`
+- 5장 스레드 알고리즘 — 이 책에서 가장 값나가는 장이다. → `books/threads-branding/ch05-algorithm.md`
+- 6장 스레드 마케팅 퍼널 — 퍼널은 인지 → 고려 → 클릭 → 전환 → 재방문의 다섯 단계로 짜인다. → `books/threads-branding/ch06-marketing-funnel.md`
+- 7장 앱테크와 제휴 마케팅으로 수익 내기 — 내 상품이 없어도 시작할 수 있는 수익 경로로 앱테크와 제휴 마케팅을 든다. → `books/threads-branding/ch07-monetization-basics.md`
+- 8장 내 사이트와 상품, 광고 제안서 — SNS 계정은 내 것이 아니다. → `books/threads-branding/ch08-own-platform.md`
+- 9장 수익화 글 운영 전략 — 수익화 글만 올리면 알고리즘 노출이 줄고, 그보다 먼저 사람들의 인식이 나빠진다. → `books/threads-branding/ch09-content-mix.md`
+- 10장 다른 SNS로 확장하기 — 스레드는 종착지가 아니라 기회비용이 가장 낮은 출발점이다. → `books/threads-branding/ch10-cross-platform.md`
+- 용어집 → `books/threads-branding/glossary.md`
