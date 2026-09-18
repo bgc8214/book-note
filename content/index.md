@@ -3,6 +3,27 @@
 자동 생성 파일이다. 직접 고치지 말고 `npm run index` 로 다시 만든다.
 에이전트는 이 파일에서 열어야 할 파일을 정한 뒤 그 파일만 연다. 경로는 `content/` 기준이다.
 
+## 무례함의 비용 (크리스틴 포래스, 2018) — mastering-civility
+태그: 조직문화, 리더십, 커뮤니케이션, 심리 · 읽은 날: 2026-09-18 · 평점: 4
+한 줄: 무례함이 감정·사고력·집중력·팀워크에 미치는 영향을 실험으로 보여주고, 정중함을 개인 습관에서 조직 제도까지 끌어올리는 방법을 정리한 책
+
+- 0장 머리말 — 당신은 어떤 사람이 되고 싶은가 — 무례한 상사 이야기를 하소연하는 사람들은 어디에나 있다. → `books/mastering-civility/ch00-preface.md`
+- 1장 왜 세상에는 막말이 넘쳐날까 — 무례한 사람은 대개 자신이 무례하다고 생각하지 않는다. → `books/mastering-civility/ch01-why-incivility.md`
+- 2장 무례함이라는 이름의 바이러스 — 1부의 중심이다. → `books/mastering-civility/ch02-incivility-virus.md`
+- 3장 정중한 사람은 못 얻을 것이 없다 — 정중함은 손해 보는 선택이 아니다. → `books/mastering-civility/ch03-civility-pays.md`
+- 4장 무례함의 감염경로와 예방법 — 무례함은 전염된다. → `books/mastering-civility/ch04-contagion.md`
+- 5장 당신은 정중한 사람입니까 — 2부는 자기 진단에서 시작한다. → `books/mastering-civility/ch05-self-assessment.md`
+- 6장 정중한 사람은 기본부터 챙긴다 — 정중함의 실체는 거창하지 않다. → `books/mastering-civility/ch06-the-basics.md`
+- 7장 내 안에 있는 편견 마주보기 — 무례함의 상당 부분은 악의가 아니라 편견에서 나온다. → `books/mastering-civility/ch07-facing-bias.md`
+- 8장 네트워크 시대에 인정받는 공유형 인간 — 네트워크로 연결된 조직에서 영향력은 쥐고 있는 사람이 아니라 나누는 사람에게 간다. → `books/mastering-civility/ch08-sharing.md`
+- 9장 클릭하기 전에 다시 한 번 생각하라 — 온라인에서는 무례함의 문턱이 낮아진다. → `books/mastering-civility/ch09-online-civility.md`
+- 10장 무례한 상사와 맞서야 한다면 — 무례한 상사를 만났을 때 가장 먼저 필요한 것은 그것이 내 탓이 아니라는 인식이다. → `books/mastering-civility/ch10-dealing-with-bad-boss.md`
+- 11장 채용 — 떡잎부터 살펴라 — 3부는 조직의 제도로 넘어간다. → `books/mastering-civility/ch11-hiring.md`
+- 12장 미션 — 원칙을 세우고 실천한다 — 정중함을 문화로 만들려면 말로 두면 안 된다. → `books/mastering-civility/ch12-mission.md`
+- 13장 평가 — 슈퍼 협력자를 찾아라 — 성과주의만으로는 정중함이 평가되지 않는다. → `books/mastering-civility/ch13-evaluation.md`
+- 14장 실행 — 무례함에 타협이란 없다 — 마지막은 실행이다. → `books/mastering-civility/ch14-execution.md`
+- 용어집 → `books/mastering-civility/glossary.md`
+
 ## 자바/스프링 개발자를 위한 실용주의 프로그래밍 (김우근, 2024) — pragmatic-programming-java-spring
 태그: 객체지향, 스프링, 테스트, 아키텍처, 설계 · 읽은 날: 2026-09-18 · 평점: 5
 한 줄: 스프링과 JPA는 기술이고 개발 능력은 따로 있다는 주장에서 출발해, 객체지향·아키텍처·테스트를 다시 세우는 책
