@@ -86,6 +86,17 @@
 - 9장 AI 시대의 개발자, AI 도구 활용으로 업무 능력 향상하기 — AI 도구가 이력서와 코드와 문서를 대신 만들어줄수록, 채용에서 평가받는 대상은 결과물이 아니라 그 결과물을 설명하고 검증하는 능력으로 옮겨간다. → `books/tech-interview-note-for-developers/ch09-ai-era-developer.md`
 - 용어집 → `books/tech-interview-note-for-developers/glossary.md`
 
+## 미움받을 용기 (기시미 이치로, 고가 후미타케, 2014) — the-courage-to-be-disliked
+태그: 아들러, 심리학, 인간관계, 자유 · 읽은 날: 2026-09-18 · 평점: 4
+한 줄: 원인이 아니라 목적으로 사람을 보는 아들러 심리학을, 철학자와 청년의 다섯 밤 대화로 풀어낸 책
+
+- 1장 첫 번째 밤 — 트라우마를 부정하라 — 아들러 심리학은 원인론을 부정한다. → `books/the-courage-to-be-disliked/ch01-deny-trauma.md`
+- 2장 두 번째 밤 — 모든 고민은 인간관계에서 비롯된다 — 모든 고민은 인간관계의 고민이다. → `books/the-courage-to-be-disliked/ch02-all-problems-are-interpersonal.md`
+- 3장 세 번째 밤 — 타인의 과제를 버리라 — 이 책의 실천적 핵심이다. → `books/the-courage-to-be-disliked/ch03-separate-tasks.md`
+- 4장 네 번째 밤 — 세계의 중심은 어디에 있는가 — 과제를 분리한 다음에 오는 것은 고립이 아니라 공동체 감각이다. → `books/the-courage-to-be-disliked/ch04-community-feeling.md`
+- 5장 다섯 번째 밤 — '지금, 여기'를 진지하게 살아간다 — 마지막 밤은 실행의 조건을 셋으로 정리한다. → `books/the-courage-to-be-disliked/ch05-here-and-now.md`
+- 용어집 → `books/the-courage-to-be-disliked/glossary.md`
+
 ## 개발 7년차, 매니저 1일차 (카미유 푸르니에, 2020) — the-managers-path
 태그: 매니지먼트, 리더십, 커리어, 조직 · 읽은 날: 2026-09-18 · 평점: 5
 한 줄: 멘토에서 테크리드, 팀장, 여러 팀 관리, 매니저 관리, 시니어 리더까지 직급 단계별로 무엇이 달라지는지 정리한 개발 관리 안내서
